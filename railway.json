@@ -1,0 +1,5 @@
+{
+  "deprecated": true,
+  "note": "Railway configuration is deprecated. Use Docker-based deployment.",
+  "see": "DEPLOYMENT_GUIDE.md"
+}

@@ -13,10 +13,12 @@ import {
   X,
   Sun,
   Moon,
-  User
+  User,
+  LogOut
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useAppStore } from '@/lib/store'
+import { useAuth } from './AuthProvider'
 
 const navigation = [
   { id: 'dashboard', name: 'Dashboard', icon: Home, emoji: '🏠' },
@@ -37,6 +39,7 @@ export default function Sidebar() {
     setEmergencyMode 
   } = useAppStore()
   
+  const { user, logout } = useAuth()
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
 
   const toggleTheme = () => {
@@ -58,7 +61,11 @@ export default function Sidebar() {
         initial={false}
         animate={{ x: sidebarOpen ? 0 : -280 }}
         transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-        className="fixed left-0 top-0 h-full w-70 bg-white border-r border-gray-200 shadow-xl z-50 lg:relative lg:translate-x-0"
+        className="fixed left-0 top-0 h-screen min-h-screen w-70 bg-white border-r border-gray-200 shadow-xl z-50 lg:relative lg:translate-x-0 lg:h-screen"
+        style={{
+          height: '100vh',
+          minHeight: '100vh'
+        }}
       >
         <div className="flex flex-col h-full">
           {/* Header */}
@@ -153,16 +160,32 @@ export default function Sidebar() {
             </button>
 
             {/* User Profile */}
-            <div className="flex items-center space-x-3 px-4 py-3 rounded-xl bg-gray-50">
-              <div className="w-8 h-8 bg-gradient-primary rounded-full flex items-center justify-center text-white">
-                <User size={16} />
+            <div className="space-y-2">
+              <div className="flex items-center space-x-3 px-4 py-3 rounded-xl bg-gray-50">
+                <div className="w-8 h-8 bg-gradient-primary rounded-full flex items-center justify-center text-white">
+                  <User size={16} />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium text-gray-900 truncate">
+                    {user?.name || 'User'}
+                  </p>
+                  <p className="text-xs text-gray-500 truncate">
+                    {user?.email}
+                  </p>
+                </div>
               </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-gray-900 truncate">
-                  Welcome User
-                </p>
-                <p className="text-xs text-gray-500">Online</p>
-              </div>
+              
+              {/* Logout Button */}
+              <button
+                onClick={() => {
+                  logout()
+                  setSidebarOpen(false)
+                }}
+                className="w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-red-600 hover:bg-red-50 transition-colors group"
+              >
+                <LogOut size={18} className="group-hover:scale-110 transition-transform" />
+                <span className="font-medium">Logout</span>
+              </button>
             </div>
           </div>
         </div>

@@ -1,0 +1,26 @@
+# Ignore unnecessary files and directories for Railway deployment
+# Deprecated: Railway is no longer used for deployment.
+# This file is kept only to avoid confusion in older setups.
+# See DEPLOYMENT_GUIDE.md for Docker-based deployment.
+*.log
+
+# Documentation and scripts not needed for deployment
+docs/
+scripts/
+tests/
+install/
+legacy/
+
+# Frontend files (deploy separately)
+shakti-ai-nextjs/
+*.md
+*.bat
+*.ps1
+
+# Large files that might cause issues
+raw_pdfs/
+*.pdf
+
+# OS files
+.DS_Store
+Thumbs.db

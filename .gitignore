@@ -185,7 +185,27 @@ Icon?
 .directory
 .Trash-*
 
-# Temporary files
+# Deployment and build artifacts
+# Docker
+docker-compose.override.yml
+*.tar
+.vercel/
+.netlify/
+# Keep Docker files tracked
+#!.dockerignore
+#!docker-compose.yml
+#!Dockerfile*
+#!*.dockerfile
+
+# Health checks and monitoring
+health_check.py
+
+# PID files and locks
+*.pid
+*.lock
+.pid
+
+# Temporary and swap files
 *.tmp
 *.temp
 *.swp

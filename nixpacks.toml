@@ -1,0 +1,3 @@
+# Deprecated: Nixpacks/Railway config no longer used.
+# Deployment is standardized on Docker.
+# See DEPLOYMENT_GUIDE.md for details.

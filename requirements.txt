@@ -1,26 +1,41 @@
-streamlit
+# Core AI and LangChain dependencies
 python-dotenv
 langchain
 langchain-core
 google-generativeai
 pydantic
+
+# Database
+psycopg2-binary
+
+# PDF processing
 PyPDF2
 pdfplumber
-PyMuPDF
+
+# Vector store and ML
 sentence-transformers
 faiss-cpu
 numpy
 huggingface_hub
-SpeechRecognition
-pocketsphinx
-pyaudio
-pywhatkit
+
+# Communications and utilities
+email-validator
 phonenumbers
 yagmail
-psycopg2-binary
-fastapi
-uvicorn
-python-multipart
-email-validator
+requests
+aiofiles
+jinja2
+streamlit
+
+# Voice and misc
+SpeechRecognition
+# pocketsphinx  # Commented out as it can cause build issues on some platforms
+# pyaudio  # Commented out as it requires system audio libraries
+pywhatkit
 pydub
-ffmpeg-python
+# ffmpeg-python  # Using system ffmpeg instead
+
+# Web server
+fastapi>=0.104.1
+uvicorn[standard]>=0.24.0
+python-multipart
